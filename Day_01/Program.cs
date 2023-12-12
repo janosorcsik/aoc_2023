@@ -31,14 +31,6 @@ static void SecondPart(string[] input)
     };
 
     Console.WriteLine("Second Part");
-    Console.WriteLine($"{GetNumber("two1nine")} 29");
-    Console.WriteLine($"{GetNumber("eightwothree")} 83");
-    Console.WriteLine($"{GetNumber("abcone2threexyz")} 13");
-    Console.WriteLine($"{GetNumber("xtwone3four")} 24");
-    Console.WriteLine($"{GetNumber("4nineeightseven2")} 42");
-    Console.WriteLine($"{GetNumber("zoneight234")} 14");
-    Console.WriteLine($"{GetNumber("7pqrstsixteen")} 76");
-
     var sum = input.Sum(GetNumber);
     Console.WriteLine("Result");
     Console.WriteLine(sum); //54208
@@ -79,11 +71,6 @@ static void SecondPart(string[] input)
 static void FirstPart(string[] input)
 {
     Console.WriteLine("First Part");
-    Console.WriteLine($"{GetNumber("1abc2")} 12");
-    Console.WriteLine($"{GetNumber("pqr3stu8vwx")} 38");
-    Console.WriteLine($"{GetNumber("a1b2c3d4e5f")} 15");
-    Console.WriteLine($"{GetNumber("treb7uchet")} 77");
-
     var sum = input.Sum(GetNumber);
     Console.WriteLine("Result");
     Console.WriteLine(sum); //54940

@@ -1,11 +1,4 @@
-﻿// var input2 =
-//     @"Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
-// Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
-// Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
-// Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
-// Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green";
-
-const int expectedBlue = 14;
+﻿const int expectedBlue = 14;
 const int expectedRed = 12;
 const int expectedGreen = 13;
 
@@ -13,8 +6,70 @@ var input = await File.ReadAllLinesAsync("input.txt");
 
 FirstPart(input);
 
+Console.WriteLine();
+
+SecondPart(input);
+
+static void SecondPart(string[] input)
+{
+    Console.WriteLine("Second Part");
+    var sum = input.Sum(GetNumber);
+    Console.WriteLine("Result");
+    Console.WriteLine(sum); //72513
+    return;
+
+    static int GetNumber(string text)
+    {
+        var gamesParts = text.Split(':');
+        var colorParts = gamesParts[1].Split(';');
+
+        var blueMax = 0;
+        var redMax = 0;
+        var greenMax = 0;
+
+        foreach (var colorPart in colorParts)
+        {
+            var colors = colorPart.Split(',');
+            foreach (var color in colors)
+            {
+                var colorData = color.Split(' ');
+                switch (colorData[2])
+                {
+                    case "blue":
+                        var blue = int.Parse(colorData[1]);
+                        if (blue > blueMax)
+                        {
+                            blueMax = blue;
+                        }
+
+                        break;
+                    case "green":
+                        var green = int.Parse(colorData[1]);
+                        if (green > greenMax)
+                        {
+                            greenMax = green;
+                        }
+
+                        break;
+                    case "red":
+                        var red = int.Parse(colorData[1]);
+                        if (red > redMax)
+                        {
+                            redMax = red;
+                        }
+
+                        break;
+                }
+            }
+        }
+
+        return blueMax * greenMax * redMax;
+    }
+}
+
 static void FirstPart(string[] input)
 {
+    Console.WriteLine("First Part");
     var sum = input.Sum(GetNumber);
     Console.WriteLine("Result");
     Console.WriteLine(sum); //2162
