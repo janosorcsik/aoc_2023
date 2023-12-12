@@ -1,9 +1,10 @@
 ﻿var input = await File.ReadAllLinesAsync("input.txt");
 
 FirstPart(input);
-Console.WriteLine();
-SecondPart(input);
 
+Console.WriteLine();
+
+SecondPart(input);
 
 static void SecondPart(string[] input)
 {
@@ -40,7 +41,7 @@ static void SecondPart(string[] input)
 
     var sum = input.Sum(GetNumber);
     Console.WriteLine("Result");
-    Console.WriteLine(sum); //54940
+    Console.WriteLine(sum); //54208
     return;
 
     int GetNumber(string text)
